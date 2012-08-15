@@ -1,0 +1,9 @@
+PreferredAuthentications publickey,hostbased,keyboard-interactive,password
+#UseDNS no
+
+Host github.com
+ProxyCommand nc -x "socks-gw.proxy.co.uk:1085" -X 5 %h %p
+
+Host dynomike.co.uk
+ProxyCommand nc -x "socks-gw.proxy.co.uk:1085" -X 5 %h %p
+

@@ -1,0 +1,5 @@
+script load adv_windowlist.pl
+script load hilightwin.pl
+script load nicklist.pl
+script load xchatnickcolor.pl
+nicklist screen

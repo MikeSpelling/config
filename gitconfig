@@ -1,0 +1,9 @@
+[http]
+	proxy = http://www-proxy.co.uk:80
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[user]
+	name = Mike
+	email = myemail@host.co.uk
