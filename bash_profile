@@ -28,7 +28,7 @@ export MAVEN_OPTS="-Xmn1G -Xmx512m
 -Dmaven.home=/usr/share/java/maven-2.2.1
 -Dmaven.repo.local=/Users/me/workspace/m2_repo/" 
 
-export PATH=/usr/local/bin:/Users/spellm01/opt/apache-jmeter-2.6/bin:/Users/spellm01/opt/scala-2.9.2/bin:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/bin:~/opt/apache-jmeter-2.6/bin:~/opt/scala-2.9.2/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
 PS1="\n${debian_chroot:+($debian_chroot)}[\d \t] \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "
 
