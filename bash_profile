@@ -38,20 +38,18 @@ ll() {
 
 restartTomcat() {
   jps -lm | grep catalina | cut -d ' ' -f 1 | xargs kill -9
-  export currDir=$PWD
+  currDir=$PWD
   cd ~/opt/apache-tomcat-6.0.35/bin/
   STUB_SERVER_HOST=http://localhost:4578 ./startup.sh
   cd $currDir
-  unset currDir
 }
 
 restartActivemq() { 
-  export currDir=$PWD
+  currDir=$PWD
   cd ~/opt/apache-activemq-5.5.0/bin/
   ./activemq stop
   ./activemq start
   cd $currDir
-  unset currDir
 }
 
 sandbox() {
