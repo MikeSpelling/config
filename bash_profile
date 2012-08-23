@@ -27,6 +27,7 @@ export MAVEN_OPTS="-Xmn1G -Xmx512m
 -Dclassworlds.conf=/usr/share/java/maven-2.2.1/bin/m2.conf
 -Dmaven.home=/usr/share/java/maven-2.2.1
 -Dmaven.repo.local=/Users/me/workspace/m2_repo/" 
+export SBT_OPTS=$MAVEN_OPTS
 
 export PATH=/usr/local/bin:~/opt/apache-jmeter-2.6/bin:~/opt/scala-2.9.2/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
