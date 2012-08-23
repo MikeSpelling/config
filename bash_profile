@@ -33,6 +33,8 @@ export PATH=/usr/local/bin:~/opt/apache-jmeter-2.6/bin:~/opt/scala-2.9.2/bin:/op
 
 PS1="\n${debian_chroot:+($debian_chroot)}[\d \t] \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "
 
+export WORKSPACE=~/workspace
+
 ll() {
   ls -la $1
 }
