@@ -2,6 +2,8 @@ cd ~/workspace
 
 [[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"  # Load RVM
 
+export WORKSPACE=~/workspace
+
 export http_proxy=proxy.co.uk:80
 export HTTP_PROXY=proxy.co.uk:80
 export https_proxy=proxy.co.uk:80
@@ -27,16 +29,14 @@ export MAVEN_OPTS="-Xmn1G -Xmx512m
 -Dclassworlds.conf=/usr/share/java/maven-2.2.1/bin/m2.conf
 -Dmaven.home=/usr/share/java/maven-2.2.1
 -Dmaven.repo.local=/Users/me/workspace/m2_repo/" 
-export SBT_OPTS=$MAVEN_OPTS
+export SBT_OPTS="$MAVEN_OPTS -Dsbt.ivy.home=$WORKSPACE/.ivy2/ -Divy.home=$WORKSPACE/.ivy2/"
 
 export PATH=/usr/local/bin:~/opt/apache-jmeter-2.6/bin:~/opt/scala-2.9.2/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
 PS1="\n${debian_chroot:+($debian_chroot)}[\d \t] \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "
 
-export WORKSPACE=~/workspace
-
 ll() {
-  ls -la $1
+  ls -la "$@"
 }
 
 restartTomcat() {
@@ -89,10 +89,18 @@ news_summary() {
   curl -s "http://www.bbc.co.uk/news/" | grep -B 10 -m 1 "see-also" | sed 's/\&quot;/\"/g' | sed "s/\&#039;/'/g" | grep "<p>" | sed 's/^[^>]*>//g'
 }
 
+ip() {
+  curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'
+}
+
 irc() {
   ps aux | grep "stunnel" | grep -v "grep" | awk '{print $2}' | xargs kill -9
   stunnel
   screen irssi
+}
+
+sslcurl() {
+  curl -s --insecure --cert $WORKSPACE/certs/cert.pem "$@"
 }
 
 proxy_on() {
