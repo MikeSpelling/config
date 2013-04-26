@@ -65,6 +65,11 @@ alias ip='ifconfig en1 | grep inet | cut -d " " -f2'
 
 alias ccurl='curl -s --insecure --cert $WORKSPACE/certs/cert.pem "$@"'
 
+alias svnrevert='svn st | grep "^M " | grep -o "[^ ]*$" | xargs svn revert'
+alias svnadd='svn st | grep "^? " | grep -o "[^ ]*$" | xargs svn add'
+
+alias lolcat='curl -s "http://thecatapi.com/api/images/get?format=xml" | grep -o "<url>[^<]*" | cut -c6- | xargs curl -s -o /tmp/cat ; open -a Preview /tmp/cat'
+
 tube() {
   curl -s http://www.tfl.gov.uk/tfl/livetravelnews/realtime/tube/default.html | grep -C 2 "class=\"status" | grep -o ">.*<" | sed 's/^.\(.*\).$/\1/' | sed 's/\&amp;/\&/g' | awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j<i) {print line[j] ":     \t" line[j+1]; j+=2}}'
 }
